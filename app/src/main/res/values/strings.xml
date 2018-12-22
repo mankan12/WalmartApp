@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">WalmartApp</string>
+    <string name="error_message">
+        An error has occurred. Please try again by clicking REFRESH
+    </string>
+
+    <string name="classifications">Classifications</string>
+    <string name="price">Price :</string>
+    <string name="add_to_cart">Add To Cart</string>
+    <string name="description">Description</string>
+    <string name="toppings">Toppings</string>
+    <string name="movie_image">Movie Image</string>
+    <string name="zero_items_in_cart">0 Items in Cart</string>
+
 </resources>
