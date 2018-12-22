@@ -4,13 +4,17 @@
         An error has occurred. Please try again by clicking REFRESH
     </string>
 
-    <string name="classifications">Classifications</string>
-    <string name="price">Price :</string>
     <string name="add_to_cart">Add To Cart</string>
-    <string name="description">Description</string>
+    <string name="original_language">Original Language</string>
     <string name="toppings">Toppings</string>
     <string name="movie_image">Movie Image</string>
     <string name="zero_items_in_cart">0 Items in Cart</string>
     <string name="released_on">Released : %1$s</string>
+    <string name="orig_lang">Language : %1$s</string>
     <string name="rating">Rating : %1$s</string>
+    <string name="play_trailer">Play Trailer</string>
+    <string name="adult">adult</string>
+    <string name="overview">overview</string>
+    <string name="for_adults">For Adults</string>
+    <string name="general_audience">General Audience</string>
 </resources>

@@ -15,7 +15,7 @@
         android:background="@android:color/white">
 
         <TextView
-            android:id="@+id/textview_name"
+            android:id="@+id/textview_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -28,15 +28,15 @@
             />
 
         <TextView
-            android:id="@+id/textview_classification"
+            android:id="@+id/textview_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
-            android:layout_below="@+id/textview_name"
+            android:layout_below="@+id/textview_title"
             android:paddingBottom="@dimen/item_horizontal_margin"
-            android:text="@string/classifications"
+            android:text="@string/rating"
             android:textSize="16sp"
             android:textColor="@color/lightGray"/>
 
@@ -44,7 +44,7 @@
             android:id="@+id/imageview_profile"
             android:layout_width="220dp"
             android:layout_height="220dp"
-            android:layout_below="@+id/textview_classification"
+            android:layout_below="@+id/textview_rating"
             android:layout_centerHorizontal="true"
             android:contentDescription="@string/movie_image"
             android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -52,6 +52,7 @@
             app:srcCompat="@android:drawable/ic_menu_gallery" />
 
         <LinearLayout
+            android:id="@+id/details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -63,26 +64,26 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textview_price"
+                    android:id="@+id/textview_release_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="@string/price"
+                    android:text="@string/released_on"
                     android:textSize="18sp"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin"/>
 
                 <Button
-                    android:id="@+id/button_add_to_cart"
+                    android:id="@+id/button_play_trailer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/textview_price"
+                    android:layout_below="@+id/textview_release_date"
                     android:layout_marginTop="16dp"
-                    android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin"
-                    android:paddingBottom="@dimen/message_list_item_vertical_margin"
-                    android:layout_gravity="center"
-                    android:text="@string/add_to_cart"
+                    android:paddingBottom="@dimen/list_item_vertical_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:paddingLeft="@dimen/list_item_vertical_margin"
+                    android:text="@string/play_trailer"
                     android:background="@color/colorPrimary"
                     android:textSize="18sp"
                     android:textColor="@color/lightGray"/>
@@ -96,29 +97,41 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textview_menu_desc"
+                    android:id="@+id/textview_original_language"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin"
-                    android:text="@string/description"
+                    android:text="@string/original_language"
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textview_toppings"
+                    android:id="@+id/textview_adult"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/textview_menu_desc"
+                    android:layout_below="@+id/textview_original_language"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin"
                     android:paddingBottom="@dimen/item_horizontal_margin"
-                    android:text="@string/toppings"
                     android:textSize="16sp"
                     android:textColor="@color/lightGray"/>
 
             </LinearLayout>
+
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textview_overview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/details"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/item_horizontal_margin"
+            android:text="@string/overview"
+            android:textSize="16sp"
+            android:textColor="@color/lightGray"/>
 
     </RelativeLayout>
 

@@ -63,10 +63,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(View v, String json_object, int position) {
                 Log.d(LOG_TAG, "clicked json item:" + json_object);
-//                Intent mIntent = new Intent(MainActivity.this, DetailActivity.class);
-//                mIntent.putExtra(MOVIE_DETAILS, json_object.toString());
-//                mIntent.putExtra(POSITION, position);
-//                startActivity(mIntent);
+                Intent mIntent = new Intent(MainActivity.this, DetailActivity.class);
+                mIntent.putExtra(MOVIE_DETAILS, json_object.toString());
+                mIntent.putExtra(POSITION, position);
+                startActivity(mIntent);
             }
         });
 

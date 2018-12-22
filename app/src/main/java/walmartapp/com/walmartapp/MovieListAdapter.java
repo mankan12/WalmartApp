@@ -69,7 +69,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         try {
             String voteAverage = moviesList.get(position).movie.getString("vote_average");
             ((MovieViewHolder) holder).voteAverage.setText(mContext.getResources()
-                    .getString(R.string.released_on, voteAverage));
+                    .getString(R.string.rating, voteAverage));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -77,7 +77,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         try {
             String releaseDate = moviesList.get(position).movie.getString("release_date");
             ((MovieViewHolder) holder).movieReleaseDate.
-                    setText(mContext.getResources().getString(R.string.rating, releaseDate));
+                    setText(mContext.getResources().getString(R.string.released_on, releaseDate));
         } catch (JSONException e) {
             e.printStackTrace();
         }
