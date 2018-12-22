@@ -86,6 +86,11 @@ public class DetailActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     // Play Trailer
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            R.string.trailer_not_available,
+                            Toast.LENGTH_SHORT);
+
+                    toast.show();
                 }
             });
 
