@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/imageview_profile"
-            android:layout_width="85dp"
-            android:layout_height="85dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -36,21 +36,34 @@
             android:textSize="18sp"
             android:paddingTop="@dimen/item_horizontal_margin"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:layout_toStartOf="@+id/textview_price" />
+            android:paddingLeft="@dimen/activity_horizontal_margin"/>
 
         <TextView
-            android:id="@+id/textview_overview"
+            android:id="@+id/textview_release_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/imageview_profile"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/textview_name"
+            android:paddingTop="@dimen/item_horizontal_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingBottom="@dimen/item_horizontal_margin"
             android:text=""
             android:textSize="16sp"
-            android:textColor="@color/light_gray"/>
+            android:textColor="@color/lightBlack"/>
+
+        <TextView
+            android:id="@+id/textview_vote_average"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/imageview_profile"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/textview_release_date"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/item_horizontal_margin"
+            android:text=""
+            android:textSize="16sp"
+            android:textColor="@color/lightBlack"/>
 
     </RelativeLayout>
 

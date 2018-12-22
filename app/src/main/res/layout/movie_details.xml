@@ -38,7 +38,7 @@
             android:paddingBottom="@dimen/item_horizontal_margin"
             android:text="@string/classifications"
             android:textSize="16sp"
-            android:textColor="@color/light_gray"/>
+            android:textColor="@color/lightGray"/>
 
         <ImageView
             android:id="@+id/imageview_profile"
@@ -85,7 +85,7 @@
                     android:text="@string/add_to_cart"
                     android:background="@color/colorPrimary"
                     android:textSize="18sp"
-                    android:textColor="@color/light_gray"/>
+                    android:textColor="@color/lightGray"/>
 
             </LinearLayout>
 
@@ -115,7 +115,7 @@
                     android:paddingBottom="@dimen/item_horizontal_margin"
                     android:text="@string/toppings"
                     android:textSize="16sp"
-                    android:textColor="@color/light_gray"/>
+                    android:textColor="@color/lightGray"/>
 
             </LinearLayout>
         </LinearLayout>

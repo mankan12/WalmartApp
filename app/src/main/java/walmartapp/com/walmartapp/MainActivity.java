@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
-        mMovieAdapter = new MovieListAdapter(new CustomItemClickListener() {
+        mMovieAdapter = new MovieListAdapter(MainActivity.this, new CustomItemClickListener() {
             @Override
             public void onItemClick(View v, String json_object, int position) {
                 Log.d(LOG_TAG, "clicked json item:" + json_object);

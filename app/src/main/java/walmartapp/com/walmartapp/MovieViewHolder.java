@@ -13,7 +13,8 @@ public class MovieViewHolder extends RecyclerView.ViewHolder
     private static final String LOG_TAG = MovieListAdapter.class.getSimpleName();
     ImageView movieAvatar;
     TextView movieName;
-    TextView movieOverview;
+    TextView voteAverage;
+    TextView movieReleaseDate;
 
     public MovieViewHolder(View itemView) {
         super(itemView);
@@ -21,7 +22,8 @@ public class MovieViewHolder extends RecyclerView.ViewHolder
 
         movieAvatar = itemView.findViewById(R.id.imageview_profile);
         movieName = itemView.findViewById(R.id.textview_name);
-        movieOverview = itemView.findViewById(R.id.textview_overview);
+        voteAverage = itemView.findViewById(R.id.textview_vote_average);
+        movieReleaseDate = itemView.findViewById(R.id.textview_release_date);
     }
 
     @Override

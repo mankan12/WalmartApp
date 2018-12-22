@@ -11,5 +11,6 @@
     <string name="toppings">Toppings</string>
     <string name="movie_image">Movie Image</string>
     <string name="zero_items_in_cart">0 Items in Cart</string>
-
+    <string name="released_on">Released : %1$s</string>
+    <string name="rating">Rating : %1$s</string>
 </resources>

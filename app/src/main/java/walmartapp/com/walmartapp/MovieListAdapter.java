@@ -1,59 +1,46 @@
 package walmartapp.com.walmartapp;
 
-
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.util.SparseArray;
-import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 public class MovieListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int MOVIE_TYPE = 1;
 
     private List<Movie> moviesList;
+    private Context mContext;
 
     private String LOG_TAG = MovieListAdapter.class.getSimpleName();
 
     CustomItemClickListener listener;
-    public MovieListAdapter(CustomItemClickListener listener) {
+    public MovieListAdapter(Context context, CustomItemClickListener listener) {
+        mContext = context;
         this.listener = listener;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view;
-        switch (viewType) {
-            case MOVIE_TYPE: {
-                view = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.movie_list_item, parent, false);
-                final MovieViewHolder mMovieViewHolder = new MovieViewHolder(view);
-                view.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        int position = mMovieViewHolder.getPosition();
-                        Log.d(LOG_TAG, "position : " + position + " , " + position);
-                        listener.onItemClick(v, moviesList.get(position).movie.toString(), position);
-                    }
-                });
-                return mMovieViewHolder;
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.movie_list_item, parent, false);
+        final MovieViewHolder mMovieViewHolder = new MovieViewHolder(view);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = mMovieViewHolder.getPosition();
+                Log.d(LOG_TAG, "position : " + position + " , " + position);
+                listener.onItemClick(v, moviesList.get(position).movie.toString(), position);
             }
-            default:
-                view = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.movie_list_item, parent, false);
-                return new MovieViewHolder(view);
-        }
+        });
+        return mMovieViewHolder;
     }
 
     @Override
@@ -80,12 +67,20 @@ public class MovieListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
 
         try {
-            String overview = moviesList.get(position).movie.getString("overview");
-            ((MovieViewHolder) holder).movieOverview.setText(overview);
+            String voteAverage = moviesList.get(position).movie.getString("vote_average");
+            ((MovieViewHolder) holder).voteAverage.setText(mContext.getResources()
+                    .getString(R.string.released_on, voteAverage));
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
+        try {
+            String releaseDate = moviesList.get(position).movie.getString("release_date");
+            ((MovieViewHolder) holder).movieReleaseDate.
+                    setText(mContext.getResources().getString(R.string.rating, releaseDate));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
