@@ -6,7 +6,6 @@
 
     <string name="add_to_cart">Add To Cart</string>
     <string name="original_language">Original Language</string>
-    <string name="toppings">Toppings</string>
     <string name="movie_image">Movie Image</string>
     <string name="zero_items_in_cart">0 Items in Cart</string>
     <string name="released_on">Released : %1$s</string>
