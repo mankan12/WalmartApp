@@ -5,4 +5,6 @@ public class MovieConstants {
     public static final String RESULTS = "results";
     public static final String POSITION = "position";
     public static final String MOVIE_DETAILS = "MOVIE_DETAILS";
+    public static final String TRAILER_ID = "TRAILER_ID";
+    public static final String YOUTUBE_API_KEY = "AIzaSyBNuP80GjhzeFMe4YDYwbk8k-CTagykeN8";
 }

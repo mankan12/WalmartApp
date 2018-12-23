@@ -2,6 +2,7 @@ package walmartapp.com.walmartapp;
 
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,8 +20,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
 import static walmartapp.com.walmartapp.MovieConstants.MOVIE_DETAILS;
 import static walmartapp.com.walmartapp.MovieConstants.POSITION;
+import static walmartapp.com.walmartapp.MovieConstants.TRAILER_ID;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -33,6 +40,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView mTextViewAdult;
     TextView mTextViewOverview;
     int mCurrentPosition;
+    private ProgressBar mLoadingIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +56,7 @@ public class DetailActivity extends AppCompatActivity {
         mTextViewAdult = (TextView) findViewById(R.id.textview_adult);
         mTextViewOverview = (TextView) findViewById(R.id.textview_overview);
         mCurrentPosition = getIntent().getIntExtra(POSITION, -1);
+        mLoadingIndicator = (ProgressBar) findViewById(R.id.loading_indicator);
         try {
             JSONObject movieDetails = new JSONObject(getIntent().getStringExtra(MOVIE_DETAILS));
             try {
@@ -82,17 +91,19 @@ public class DetailActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            mPlayTrailer.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // Play Trailer
-                    Toast toast = Toast.makeText(getApplicationContext(),
-                            R.string.trailer_not_available,
-                            Toast.LENGTH_SHORT);
+            try {
+                final String Id = movieDetails.getString("id");
 
-                    toast.show();
-                }
-            });
+                mPlayTrailer.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        new FetchYoutubeTask().execute(Id);
+                    }
+                });
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
             try {
                 String language = movieDetails.getString("original_language");
@@ -122,6 +133,45 @@ public class DetailActivity extends AppCompatActivity {
 
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+    }
+
+    public class FetchYoutubeTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            mLoadingIndicator.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String videoId = params[0];
+            URL youtubeRequestUrl = NetworkUtils.buildYoutubeUrl(videoId);
+
+            try {
+                String jsonYoutubeResponse = NetworkUtils
+                        .getResponseFromHttpUrl(youtubeRequestUrl);
+
+                JSONObject youtubeResponse = new JSONObject(jsonYoutubeResponse);
+
+                JSONArray youtubeResponseArray = youtubeResponse.getJSONArray(MovieConstants.RESULTS);
+                JSONObject youtubeObject = youtubeResponseArray.getJSONObject(0);
+
+                return youtubeObject.getString("key");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String key) {
+            mLoadingIndicator.setVisibility(View.INVISIBLE);
+            Intent mIntent = new Intent(DetailActivity.this, TrailerActivity.class);
+            mIntent.putExtra(TRAILER_ID, key);
+            startActivity(mIntent);
         }
     }
 }

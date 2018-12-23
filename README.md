@@ -12,7 +12,7 @@ Sample app for Interview
 5) Serialization and Deserialization of list item data is done thru JSONObject's toString() method as
    opposed to creating Parcelable class from Android. JSONObject's toString() offers simple way to
    send intentExtra as a String and new JSONObject creation from a String.
-6) Currently the app shows a button for movie trailer. 
+6) Currently the app shows a button for movie trailer.
 6) The app can be extended to show movie's trailer in a new fragment. To make this happen, a container
    needs to be created that can add/replace DetailFragment with TrailerFragment and vice versa.
 
